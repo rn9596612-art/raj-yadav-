@@ -1,0 +1,22 @@
+{
+  "entities": {
+    "Memory": {
+      "title": "Memory",
+      "description": "A piece of information Sona remembers about the user.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "The unique ID of the user." },
+        "content": { "type": "string", "description": "The information to remember." },
+        "category": { "type": "string", "description": "Type of memory (e.g., name, interest, joke)." },
+        "createdAt": { "type": "string", "format": "date-time", "description": "When the memory was created." }
+      },
+      "required": ["userId", "content", "createdAt"]
+    }
+  },
+  "firestore": {
+    "memories/{memoryId}": {
+      "schema": "Memory",
+      "description": "Collection of user memories."
+    }
+  }
+}

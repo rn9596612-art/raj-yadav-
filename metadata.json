@@ -1,0 +1,13 @@
+{
+  "name": "Sona AI Assistant",
+  "description": "Your fully responsive, multitasking Voice-to-Voice Android AI companion. Run Sona securely in the background, set alarms, manage hardware settings verbally, play YouTube video tracks, or trigger calls hands-free.",
+  "requestFramePermissions": [
+    "microphone",
+    "camera",
+    "geolocation",
+    "notifications"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

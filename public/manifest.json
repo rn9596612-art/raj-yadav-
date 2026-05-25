@@ -1,0 +1,38 @@
+{
+  "name": "Sona AI Assistant",
+  "short_name": "Sona AI",
+  "description": "Voice-to-Voice Android AI companion. Run Sona securely in the background, set alarms, or connect hands-free.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0512",
+  "theme_color": "#0a0512",
+  "orientation": "portrait",
+  "prefer_related_applications": false,
+  "icons": [
+    {
+      "src": "/launcher-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/launcher-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/launcher-icon.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml"
+    }
+  ],
+  "categories": ["utilities", "productivity", "social"],
+  "shortcuts": [
+    {
+      "name": "Start Chat with Sona",
+      "url": "/?shortcut=chat",
+      "description": "Instantly trigger verbal conversation"
+    }
+  ]
+}

@@ -1,0 +1,101 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+@layer utilities {
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-shimmer {
+  background-size: 200% auto;
+  animation: shimmer 3s linear infinite;
+}
+
+/* Custom Vibe Animations for Microphone Orb */
+@keyframes vibe-heartbeat {
+  0%, 100% { transform: scale3d(1, 1, 1); }
+  14% { transform: scale3d(1.08, 1.08, 1); }
+  28% { transform: scale3d(1.02, 1.02, 1); }
+  42% { transform: scale3d(1.12, 1.12, 1); }
+  70% { transform: scale3d(1, 1, 1); }
+}
+
+@keyframes vibe-jitter {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+  25% { transform: translate3d(-1px, -1px, 0) rotate(-1deg); }
+  50% { transform: translate3d(1px, 1px, 0) rotate(1deg); }
+  75% { transform: translate3d(-1px, 1px, 0) rotate(-0.5deg); }
+}
+
+@keyframes vibe-happy-bounce {
+  0%, 100% { transform: translate3d(0, 0, 0) scale3d(1, 1, 1); }
+  50% { transform: translate3d(0, -10px, 0) scale3d(1.04, 1.04, 1); }
+}
+
+@keyframes vibe-angry-shake {
+  0%, 100% { transform: translate3d(0, 0, 0) scale3d(1.02, 1.02, 1); }
+  25% { transform: translate3d(-2px, 1px, 0); }
+  50% { transform: translate3d(2px, -1px, 0); }
+  75% { transform: translate3d(-1px, -2px, 0); }
+}
+
+@keyframes vibe-default-breath {
+  0%, 100% { transform: scale3d(1, 1, 1); }
+  50% { transform: scale3d(1.02, 1.02, 1); }
+}
+
+.animate-vibe-flirty {
+  will-change: transform;
+  animation: vibe-heartbeat 1.3s infinite ease-in-out;
+}
+
+.animate-vibe-sassy {
+  will-change: transform;
+  animation: vibe-jitter 1.2s infinite ease-in-out; /* Slowed down + smoothed for premium feedback */
+}
+
+.animate-vibe-happy {
+  will-change: transform;
+  animation: vibe-happy-bounce 1.8s infinite ease-in-out;
+}
+
+.animate-vibe-angry {
+  will-change: transform;
+  animation: vibe-angry-shake 0.3s infinite ease-in-out; /* Much smoother duration with will-change */
+}
+
+.animate-vibe-default {
+  will-change: transform;
+  animation: vibe-default-breath 2.5s infinite ease-in-out;
+}
+
+/* Custom Circle to Search Sweeping/Oscillating Animation */
+@keyframes cts-sweep {
+  0% { transform: rotate(0deg) scale(1); }
+  25% { transform: rotate(140deg) scale(1.08); }
+  45% { transform: rotate(90deg) scale(0.95); }
+  70% { transform: rotate(260deg) scale(1.05); }
+  85% { transform: rotate(200deg) scale(0.97); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+.animate-cts {
+  animation: cts-sweep 5s infinite ease-in-out;
+}
+
+

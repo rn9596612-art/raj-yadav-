@@ -1,0 +1,36 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Default deny
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Helper functions
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    function isValidMemory(data) {
+      let hasCategory = data.keys().hasAll(['category']);
+      return data.keys().hasAll(['userId', 'content', 'createdAt']) &&
+             data.keys().size() == (hasCategory ? 4 : 3) &&
+             data.userId is string && data.userId.size() <= 128 &&
+             data.content is string && data.content.size() <= 1000 &&
+             (!hasCategory || (data.category is string && data.category.size() <= 64)) &&
+             data.createdAt == request.time;
+    }
+
+    match /memories/{memoryId} {
+      allow list: if isSignedIn() && resource.data.userId == request.auth.uid;
+      allow get: if isSignedIn() && resource.data.userId == request.auth.uid;
+      allow create: if isSignedIn() && isOwner(request.resource.data.userId) && isValidMemory(request.resource.data);
+      allow delete: if isSignedIn() && resource.data.userId == request.auth.uid;
+      // No updates for memories, just delete and recreate if needed for simplicity
+    }
+  }
+}
